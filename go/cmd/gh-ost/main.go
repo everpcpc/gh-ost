@@ -178,6 +178,9 @@ func main() {
 	}
 	if migrationContext.SrcConnectionConfig.Key.Hostname == "" {
 		migrationContext.SrcConnectionConfig.Key.Hostname = migrationContext.DstConnectionConfig.Key.Hostname
+		if (migrationContext.AssumeDstMasterHostname != "") && (migrationContext.AssumeSrcMasterHostname == "") {
+			migrationContext.AssumeSrcMasterHostname = migrationContext.AssumeDstMasterHostname
+		}
 	}
 	if migrationContext.SrcConnectionConfig.Key.Port == 0 {
 		migrationContext.SrcConnectionConfig.Key.Port = migrationContext.DstConnectionConfig.Key.Port
